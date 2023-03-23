@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fire Ball Death Sprite.png-f7cadcca4fb5db05c68ba53b9e3254eb.stex"
+path="res://.import/Portal Sprite.png-f11366255ddcbb4564af5934d4d97217.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fire Ball Death Sprite.png"
-dest_files=[ "res://.import/Fire Ball Death Sprite.png-f7cadcca4fb5db05c68ba53b9e3254eb.stex" ]
+source_file="res://Assets/Portal Sprite.png"
+dest_files=[ "res://.import/Portal Sprite.png-f11366255ddcbb4564af5934d4d97217.stex" ]
 
 [params]
 

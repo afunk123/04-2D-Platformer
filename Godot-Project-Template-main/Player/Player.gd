@@ -22,6 +22,7 @@ var is_jumping = false
 var double_jumped = false
 var should_direction_flip = true # wether or not player controls (left/right) can flip the player sprite
 
+var lives = 5
 
 func _physics_process(_delta):
 	velocity.x = clamp(velocity.x,-max_move,max_move)
@@ -48,7 +49,8 @@ func _unhandled_input(event):
 	if event.is_action_pressed("right"):
 		direction = 1
 
-func set_animation(anim):
+func set_animation(anim, off = Vector2.ZERO):
+	$AnimatedSprite.offset = off
 	if $AnimatedSprite.animation == anim: return
 	if $AnimatedSprite.frames.has_animation(anim): $AnimatedSprite.play(anim)
 	else: $AnimatedSprite.play()
@@ -80,5 +82,12 @@ func set_wall_raycasts(is_enabled):
 	$Wall/Left.enabled = is_enabled
 	$Wall/Right.enabled = is_enabled
 
+func do_damage(d):
+	Global.decrease_health(d)
+	if Global.health <= 0:
+		die()
+
 func die():
-	queue_free()
+	Global.decrease_lives(1)
+	if lives <= 0:
+		queue_free()

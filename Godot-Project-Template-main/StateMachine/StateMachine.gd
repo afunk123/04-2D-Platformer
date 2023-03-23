@@ -21,6 +21,7 @@ func _unhandled_input(event):
 		state.unhandled_input(event)
 
 func set_state(s):
+	print(s)
 	state_name = s
 	var new_state = get_node(s)
 	if new_state != null:

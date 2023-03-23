@@ -1,7 +1,7 @@
 extends Node2D
 
 export var spawn_location = Vector2(100, 450)
-onready  var Player = load(":res/Player/Player.tscn")
+onready var Player = load("res://Player/Player.tscn")
 
 func _physics_process(_delta):
 	var player = get_node_or_null("Player")
