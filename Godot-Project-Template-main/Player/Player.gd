@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var SM = $StateMachine
+onready var Attack = load("res://Player/Attack.tscn")
 
 var velocity = Vector2.ZERO
 var jump_power = Vector2.ZERO
@@ -30,6 +31,12 @@ func _physics_process(_delta):
 	if should_direction_flip:
 		if direction < 0 and not $AnimatedSprite.flip_h: $AnimatedSprite.flip_h = true
 		if direction > 0 and $AnimatedSprite.flip_h: $AnimatedSprite.flip_h = false
+	
+	if Input.is_action_just_pressed("attack"):
+		var attack = Attack.instance()
+		attack.position = position
+		attack.direction = direction
+		get_node("/root/Game/Attack_Container").add_child(attack)
 	
 	if is_on_floor():
 		double_jumped = false

@@ -3,7 +3,7 @@ extends KinematicBody2D
 var player = null
 export var damage = 4
 onready var ray = $RayCast2D
-export var speed = 250
+export var speed = 150
 export var looking_speed = 100
 var velocity = Vector2.ZERO
 

@@ -347,19 +347,23 @@ script = ExtResource( 1 )
 position = Vector2( 557, 83 )
 frames = SubResource( 146 )
 animation = "Flying"
-frame = 2
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 557, 84 )
 shape = SubResource( 147 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 557, 74 )
 enabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 557, 74 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2( 557, 84 )
 shape = SubResource( 148 )
 
