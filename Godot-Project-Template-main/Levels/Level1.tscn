@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Assets/Tilemaps/Background Elements Tole Map.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Tilemaps/Terrain Tile Map.png" type="Texture" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Portal Sprite.png" type="Texture" id=12]
 [ext_resource path="res://Enemies/Enemy_Container.gd" type="Script" id=13]
+[ext_resource path="res://HUD/Overlay.gd" type="Script" id=14]
+[ext_resource path="res://HUD/Overlay_Die.gd" type="Script" id=15]
+[ext_resource path="res://Assets/Back Groove.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://Enemies/Spider.tscn" type="PackedScene" id=17]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 70, 70, 0, 70, 0, 0, 70, 0 )
@@ -948,7 +952,46 @@ animations = [ {
 "speed": 30.0
 } ]
 
+[sub_resource type="DynamicFont" id=66]
+size = 27
+extra_spacing_char = 2
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=67]
+size = 27
+extra_spacing_char = 2
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=68]
+size = 27
+extra_spacing_char = 2
+font_data = ExtResource( 16 )
+
 [node name="Game" type="Node2D"]
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2( 408, 20 )
+rotation = 1.5708
+amount = 300
+speed_scale = 0.1
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 90.0
+initial_velocity = 1000.0
+scale_amount = 4.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 989, 17 )
+rotation = 1.5708
+amount = 300
+speed_scale = 0.1
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 90.0
+initial_velocity = 1000.0
+scale_amount = 4.0
 
 [node name="Background" type="TileMap" parent="."]
 tile_set = SubResource( 25 )
@@ -1000,6 +1043,9 @@ min_constraints = 140
 
 [node name="Pheonix" parent="Enemy_Container" instance=ExtResource( 10 )]
 
+[node name="Spider" parent="Enemy_Container" instance=ExtResource( 17 )]
+position = Vector2( 423, 315 )
+
 [node name="Snowflake_Container" type="Node2D" parent="."]
 
 [node name="Snowflake" parent="Snowflake_Container" instance=ExtResource( 8 )]
@@ -1027,7 +1073,6 @@ script = ExtResource( 9 )
 position = Vector2( 1, 0 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 65 )
-frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Portal_to_2"]
@@ -1057,6 +1102,18 @@ script = ExtResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Overlay" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0.298039, 0.298039, 0 )
+script = ExtResource( 14 )
+
+[node name="Overlay_Die" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+script = ExtResource( 15 )
+
 [node name="HUD" type="Control" parent="CanvasLayer"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -1072,6 +1129,8 @@ margin_left = 250.0
 margin_top = 2.0
 margin_right = 450.0
 margin_bottom = 42.0
+custom_colors/font_color = Color( 0.878431, 0.890196, 0.47451, 1 )
+custom_fonts/font = SubResource( 66 )
 text = "Score"
 valign = 1
 
@@ -1080,6 +1139,8 @@ margin_left = 77.0
 margin_top = -1.0
 margin_right = 277.0
 margin_bottom = 39.0
+custom_colors/font_color = Color( 0.490196, 1, 0.964706, 1 )
+custom_fonts/font = SubResource( 67 )
 text = "Lives"
 valign = 1
 
@@ -1087,6 +1148,8 @@ valign = 1
 margin_left = 500.0
 margin_right = 700.0
 margin_bottom = 40.0
+custom_colors/font_color = Color( 1, 0.545098, 0.545098, 1 )
+custom_fonts/font = SubResource( 68 )
 text = "Health"
 valign = 1
 

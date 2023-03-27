@@ -2,6 +2,9 @@ extends KinematicBody2D
 
 onready var SM = $StateMachine
 onready var Attack = load("res://Player/Attack.tscn")
+onready var camera = get_node("/root/Game/Camera")
+onready var overlay = get_node("/root/Game/CanvasLayer/Overlay")
+onready var overlay_die = get_node("/root/Game/CanvasLayer/Overlay_Die")
 
 var velocity = Vector2.ZERO
 var jump_power = Vector2.ZERO
@@ -23,24 +26,31 @@ var is_jumping = false
 var double_jumped = false
 var should_direction_flip = true # wether or not player controls (left/right) can flip the player sprite
 
-var lives = 5
+var paused = false
+
+func _ready():
+	overlay_die.connect("faded_out", self, "_faded_out")
+	overlay_die.connect("faded_in", self, "_faded_in")
+	paused = true
+	overlay_die.fade_in()
 
 func _physics_process(_delta):
-	velocity.x = clamp(velocity.x,-max_move,max_move)
+	if not paused:
+		velocity.x = clamp(velocity.x,-max_move,max_move)
+			
+		if should_direction_flip:
+			if direction < 0 and not $AnimatedSprite.flip_h: $AnimatedSprite.flip_h = true
+			if direction > 0 and $AnimatedSprite.flip_h: $AnimatedSprite.flip_h = false
 		
-	if should_direction_flip:
-		if direction < 0 and not $AnimatedSprite.flip_h: $AnimatedSprite.flip_h = true
-		if direction > 0 and $AnimatedSprite.flip_h: $AnimatedSprite.flip_h = false
-	
-	if Input.is_action_just_pressed("attack"):
-		var attack = Attack.instance()
-		attack.position = position
-		attack.direction = direction
-		get_node("/root/Game/Attack_Container").add_child(attack)
-	
-	if is_on_floor():
-		double_jumped = false
-		set_wall_raycasts(true)
+		if Input.is_action_just_pressed("attack"):
+			var attack = Attack.instance()
+			attack.position = position
+			attack.direction = direction
+			get_node("/root/Game/Attack_Container").add_child(attack)
+		
+		if is_on_floor():
+			double_jumped = false
+			set_wall_raycasts(true)
 
 func is_moving():
 	if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
@@ -90,11 +100,19 @@ func set_wall_raycasts(is_enabled):
 	$Wall/Right.enabled = is_enabled
 
 func do_damage(d):
+	camera.add_trauma(0.7)
+	overlay.add_trauma(0.4)
 	Global.decrease_health(d)
 	if Global.health <= 0:
 		die()
 
 func die():
 	Global.decrease_lives(1)
-	if lives <= 0:
-		queue_free()
+	overlay_die.fade_out()
+	queue_free()
+
+func _faded_out():
+	queue_free()
+
+func _faded_in():
+	paused = false

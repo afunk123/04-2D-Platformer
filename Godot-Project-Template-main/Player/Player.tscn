@@ -791,19 +791,19 @@ shape = SubResource( 16 )
 [node name="Left" type="RayCast2D" parent="Floor"]
 position = Vector2( -8, 37 )
 enabled = true
-cast_to = Vector2( 0, 10 )
+cast_to = Vector2( 0, 14 )
 collision_mask = 30
 
 [node name="Center" type="RayCast2D" parent="Floor"]
 position = Vector2( 0, 37 )
 enabled = true
-cast_to = Vector2( 0, 10 )
+cast_to = Vector2( 0, 15 )
 collision_mask = 30
 
 [node name="Right" type="RayCast2D" parent="Floor"]
 position = Vector2( 7, 38 )
 enabled = true
-cast_to = Vector2( 0, 8 )
+cast_to = Vector2( 0, 15 )
 collision_mask = 2147483678
 
 [node name="Wall" type="Node2D" parent="."]
