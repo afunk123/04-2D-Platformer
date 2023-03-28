@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Snowy Odssey.mp3-0782e7248178a64f707581e41ca209d3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Snowy Odssey.mp3"
+dest_files=[ "res://.import/Snowy Odssey.mp3-0782e7248178a64f707581e41ca209d3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

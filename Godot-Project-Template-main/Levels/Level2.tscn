@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Player/Player_Container.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Pheonix.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Collectables/Snowflake4.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Collectables/Snowflake3.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Assets/Snowflake Collectable.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Snowy Odssey.mp3" type="AudioStream" id=21]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 70, 70, 0, 70, 0, 0, 70, 0 )
@@ -975,7 +976,7 @@ tile_data = PoolIntArray( 393255, 536870919, 0, 458762, 536870919, 0 )
 tile_set = SubResource( 25 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 0, -1610612736, 0, 18, -2147483648, 0, 65536, -1610612736, 0, 65554, -2147483648, 0, 131072, -1610612736, 0, 131090, -2147483648, 0, 196608, -1610612736, 0, 196626, -2147483611, 0, 262144, 536870950, 0, 262162, -2147483648, 0, 327680, -1610612736, 0, 327698, -2147483611, 0, 393216, -1610612736, 0, 393234, -2147483648, 0, 458752, 536870950, 0, 458770, -2147483648, 0, 524288, -1610612736, 0, 524306, -2147483611, 0, 589824, -1610612736, 0, 589842, -2147483611, 0, 655360, -1610612736, 0, 655378, -2147483648, 0, 720896, -1610612701, 0, 720914, -2147483648, 0, 786432, -1610612736, 0, 786450, -2147483648, 0, 851968, -1610612736, 0, 851986, -2147483613, 0, 917504, -1610612701, 0, 917522, -2147483613, 0, 983040, 0, 0, 983041, 0, 0, 983042, 35, 0, 983043, 35, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 35, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 35, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0 )
+tile_data = PoolIntArray( -65535, 1073741859, 0, -65534, 1073741859, 0, -65533, 1073741824, 0, -65532, 1073741824, 0, -65531, 1073741824, 0, -65530, 1073741859, 0, -65529, 1073741824, 0, -65528, 1073741824, 0, -65527, 1073741824, 0, -65526, 1073741824, 0, -65525, 1073741859, 0, -65524, 1073741824, 0, -65523, 1073741824, 0, -65522, 1073741824, 0, -65521, 1073741824, 0, -65520, 1073741859, 0, -65519, 1073741824, 0, 0, -1610612736, 0, 18, -2147483648, 0, 65536, -1610612736, 0, 65554, -2147483648, 0, 131072, -1610612736, 0, 131090, -2147483648, 0, 196608, -1610612736, 0, 196626, -2147483611, 0, 262144, 536870950, 0, 262162, -2147483648, 0, 327680, -1610612736, 0, 327698, -2147483611, 0, 393216, -1610612736, 0, 393234, -2147483648, 0, 458752, 536870950, 0, 458770, -2147483648, 0, 524288, -1610612736, 0, 524306, -2147483611, 0, 589824, -1610612736, 0, 589842, -2147483611, 0, 655360, -1610612736, 0, 655378, -2147483648, 0, 720896, -1610612701, 0, 720914, -2147483648, 0, 786432, -1610612736, 0, 786450, -2147483648, 0, 851968, -1610612736, 0, 851986, -2147483613, 0, 917504, -1610612701, 0, 917522, -2147483613, 0, 983040, 0, 0, 983041, 0, 0, 983042, 35, 0, 983043, 35, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 35, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 35, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0 )
 
 [node name="Platforms" type="TileMap" parent="."]
 tile_set = SubResource( 25 )
@@ -1018,24 +1019,24 @@ position = Vector2( 171, 538 )
 [node name="Snowflake_Container" type="Node2D" parent="."]
 
 [node name="Snowflake" parent="Snowflake_Container" instance=ExtResource( 3 )]
-position = Vector2( 143, 530 )
+position = Vector2( 117, 773 )
 
 [node name="Snowflake2" parent="Snowflake_Container" instance=ExtResource( 17 )]
 position = Vector2( 136, 119 )
 
 [node name="Snowflake3" parent="Snowflake_Container" instance=ExtResource( 19 )]
-position = Vector2( 686, 229 )
+position = Vector2( 1085, 927 )
 
 [node name="Snowflake4" parent="Snowflake_Container" instance=ExtResource( 18 )]
-position = Vector2( 1246, 325 )
+position = Vector2( 759, 683 )
 
 [node name="Snowflake5" parent="Snowflake_Container" instance=ExtResource( 16 )]
-position = Vector2( 1124, 553 )
+position = Vector2( 1059, 99 )
 
 [node name="Attack_Container" type="Node2D" parent="."]
 
 [node name="Portal_to_3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 784, 915 )
+position = Vector2( 1070, 690 )
 
 [node name="Foreground" type="TileMap" parent="."]
 tile_set = SubResource( 25 )
@@ -1049,8 +1050,8 @@ tile_data = PoolIntArray( 196610, 536870917, 0, 196618, 536870915, 0, 196624, 53
 current = true
 limit_left = 0
 limit_top = 0
-limit_right = 1980
-limit_bottom = 630
+limit_right = 1230
+limit_bottom = 1010
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 drag_margin_left = 0.1
@@ -1155,3 +1156,7 @@ position = Vector2( 904, 23 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 103 )
 playing = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+autoplay = true

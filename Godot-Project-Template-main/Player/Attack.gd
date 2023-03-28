@@ -1,6 +1,7 @@
 extends Area2D
 
 var direction = 1
+var damage = 1
 var dead = false
 
 func ready():
@@ -18,7 +19,7 @@ func _on_Attack_body_entered(body):
 		if body.name == "Player":
 			pass
 		if body.get_parent().name == "Enemy_Container":
-			body.die()
+			body.do_damage()
 		$AnimatedSprite.animation = "After"
 		dead = true
 
