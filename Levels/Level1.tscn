@@ -1100,7 +1100,7 @@ script = ExtResource( 9 )
 position = Vector2( 1, 0 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 65 )
-frame = 5
+frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Portal_to_2"]
@@ -1153,10 +1153,9 @@ margin_bottom = 40.0
 color = Color( 0.603922, 0.603922, 0.603922, 0.470588 )
 
 [node name="Score" type="Label" parent="CanvasLayer/HUD"]
-margin_left = 222.0
-margin_top = -1.0
-margin_right = 422.0
-margin_bottom = 39.0
+margin_left = 203.0
+margin_right = 403.0
+margin_bottom = 40.0
 custom_colors/font_color = Color( 0.878431, 0.890196, 0.47451, 1 )
 custom_fonts/font = SubResource( 66 )
 text = "Score"

@@ -103,6 +103,7 @@ func attack():
 		if enemy.has_method("die"):
 			enemy.die()
 
+
 func do_damage(d):
 	camera.add_trauma(0.7)
 	overlay.add_trauma(0.4)
