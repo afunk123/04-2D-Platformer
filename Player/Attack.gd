@@ -18,7 +18,7 @@ func _on_Attack_body_entered(body):
 	if not dead:
 		if body.name == "Player":
 			pass
-		if body.get_parent().name == "Enemy_Container":
+		if body.get_parent().name == "Enemy_Container" and body.has_method("do_damage"):
 			body.do_damage()
 		$AnimatedSprite.animation = "After"
 		dead = true

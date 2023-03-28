@@ -41,11 +41,8 @@ func _physics_process(_delta):
 			if direction < 0 and not $AnimatedSprite.flip_h: $AnimatedSprite.flip_h = true
 			if direction > 0 and $AnimatedSprite.flip_h: $AnimatedSprite.flip_h = false
 		
-		if Input.is_action_just_pressed("attack"):
-			var attack = Attack.instance()
-			attack.position = position
-			attack.direction = direction
-			get_node("/root/Game/Attack_Container").add_child(attack)
+		if Input.is_action_pressed("attack"):
+			SM.set_state("Attacking")
 		
 		if is_on_floor():
 			double_jumped = false
@@ -67,6 +64,7 @@ func _unhandled_input(event):
 		direction = 1
 
 func set_animation(anim, off = Vector2.ZERO):
+	off.x *= direction
 	$AnimatedSprite.offset = off
 	if $AnimatedSprite.animation == anim: return
 	if $AnimatedSprite.frames.has_animation(anim): $AnimatedSprite.play(anim)
@@ -99,6 +97,12 @@ func set_wall_raycasts(is_enabled):
 	$Wall/Left.enabled = is_enabled
 	$Wall/Right.enabled = is_enabled
 
+func attack():
+	var enemies = $Attacking.get_overlapping_bodies()
+	for enemy in enemies:
+		if enemy.has_method("die"):
+			enemy.die()
+
 func do_damage(d):
 	camera.add_trauma(0.7)
 	overlay.add_trauma(0.4)
@@ -121,3 +125,5 @@ func _faded_out():
 
 func _faded_in():
 	paused = false
+
+

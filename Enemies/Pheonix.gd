@@ -10,26 +10,26 @@ var velocity = Vector2.ZERO
 var health = 1
 
 func _physics_process(_delta):
-	if player == null:
-		player = get_node_or_null("/root/Game/Player_Container/Player")
-	else:
+	player = get_node_or_null("/root/Game/Player_Container/Player")
+	if player != null:
 		ray.cast_to = ray.to_local(player.global_position)
 		var c = ray.get_collider()
 		if c:
 			velocity = ray.cast_to.normalized() * looking_speed
 			if c.name == "Player":
 				velocity = ray.cast_to.normalized() * speed
-				move_and_slide(velocity, Vector2(0,0))
+				velocity = move_and_slide(velocity, Vector2(0,0))
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and health > 0:
 		$AnimatedSprite.play("Attacking")
 		body.do_damage(damage)
 	if body.name == null:
 		$AnimatedSprite.play("Flying")
 
 func die():
-	if health <= 0:
+	health -= 1
+	if health == 0:
 		$AnimatedSprite.play("Dying")
 		$AnimatedSprite.offset = Vector2(-1, -8)
 		collision_layer = 0

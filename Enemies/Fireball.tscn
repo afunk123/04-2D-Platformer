@@ -153,6 +153,7 @@ position = Vector2( 788, 557 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 36 )
 animation = "Moving"
+frame = 9
 playing = true
 offset = Vector2( -1, -8 )
 flip_h = true

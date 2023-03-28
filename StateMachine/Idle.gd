@@ -11,7 +11,7 @@ func start():
 	player.set_animation("Idle")
 	player.jump_power = Vector2.ZERO
 
-func _physics_process(_delta):
+func physics_process(_delta):
 	if not player.is_on_floor():
 		SM.set_state("Falling")
 	if player.is_on_floor():

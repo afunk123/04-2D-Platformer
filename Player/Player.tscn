@@ -1,5 +1,6 @@
-[gd_scene load_steps=195 format=2]
+[gd_scene load_steps=197 format=2]
 
+[ext_resource path="res://StateMachine/Attacking.gd" type="Script" id=1]
 [ext_resource path="res://StateMachine/Jumping.gd" type="Script" id=2]
 [ext_resource path="res://StateMachine/Moving.gd" type="Script" id=3]
 [ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=4]
@@ -772,6 +773,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 28, 43 )
 
+[sub_resource type="RectangleShape2D" id=380]
+extents = Vector2( 25.5, 35 )
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 201, 201 )
 script = ExtResource( 9 )
@@ -785,6 +789,12 @@ playing = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
 shape = SubResource( 16 )
+
+[node name="Attacking" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attacking"]
+position = Vector2( 54.5, -12 )
+shape = SubResource( 380 )
 
 [node name="Floor" type="Node2D" parent="."]
 
@@ -843,6 +853,9 @@ script = ExtResource( 5 )
 [node name="Timer" type="Timer" parent="StateMachine/Coyote"]
 wait_time = 0.2
 one_shot = true
+
+[node name="Attacking" type="Node" parent="StateMachine"]
+script = ExtResource( 1 )
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="StateMachine/Coyote/Timer" to="StateMachine/Coyote" method="_on_Timer_timeout"]
