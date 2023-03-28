@@ -21,16 +21,16 @@ func _unhandled_input(event):
 		state.unhandled_input(event)
 
 func set_state(s):
-	print(s)
-	state_name = s
-	var new_state = get_node(s)
-	if new_state != null:
-		if state != null:
-			if state.has_method("end"):
-				state.end()
-			previous_state = state
-		state = new_state
-		if state.has_method("start"):
-			state.start()
-	else:
-		state = null
+	if s != state_name:
+		state_name = s
+		var new_state = get_node(s)
+		if new_state != null:
+			if state != null:
+				if state.has_method("end"):
+					state.end()
+				previous_state = state
+			state = new_state
+			if state.has_method("start"):
+				state.start()
+		else:
+			state = null

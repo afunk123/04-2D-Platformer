@@ -26,10 +26,11 @@ func _on_Area2D_body_entered(body):
 	if velocity.x != 0 and (body.name == "Platform" or body.name == "Ground"):
 		velocity.x = 0
 		direction *= -1
-	if body.name == "Player":
+	if body.name == "Player" and health > 0:
 		body.do_damage(damage)
 
 func die():
+	health -= 1
 	if health <= 0:
 		$AnimatedSprite.play("Dying")
 		$AnimatedSprite.offset = Vector2(-1, -8)
