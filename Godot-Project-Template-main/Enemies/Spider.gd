@@ -14,7 +14,7 @@ func _ready():
 
 func _physics_process(_delta):
 	if player == null:
-		player = get_node_or_null("/root/Game/Player_Container/Player")
+		player = get_node("/root/Game/Player_Container/Player")
 	else:
 		ray.cast_to = ray.to_local(player.global_position)
 		var c = ray.get_collider()
@@ -25,14 +25,13 @@ func _physics_process(_delta):
 				move_and_slide(velocity, Vector2(0,0))
 		$AnimatedSprite.play("Moving")
 
-func _on_Sight_body_entered(body):
-	if body.name == "Player":
-		$AnimatedSprite.play("Attacking")
-
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
+		$AnimatedSprite.play("Attacking")
 		body.do_damage(damage)
-
+	if body.name == null:
+		$AnimatedSprite.play("Moving")
+		
 func die():
 	if health <= 0:
 		$AnimatedSprite.play("Dying")

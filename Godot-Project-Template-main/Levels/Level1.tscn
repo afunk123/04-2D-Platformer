@@ -1100,7 +1100,7 @@ script = ExtResource( 9 )
 position = Vector2( 1, 0 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 65 )
-frame = 10
+frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Portal_to_2"]
