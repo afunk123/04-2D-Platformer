@@ -2,6 +2,7 @@
 This is the 4th Project for MSCH 220. 
 This a 2D Platfomer drapped in snow and ice
 
+
 ## Implementation
 Levels:
 - 3 Unique Levels each with their own:
@@ -54,10 +55,10 @@ Music:
 
 HUD:
 - Labels that track: 
-- - # of Lives
+- - Number of Lives
 - - Score of the Player
 - - Health out of 20
-- - # of Snowflakes collected
+- - Number of Snowflakes collected
 - - - Shows Snowflake Icons
 - Overlays
 - - Overlay that shows when the player gets hit
@@ -67,6 +68,7 @@ HUD:
 Camera:
 - Camera that follows the player
 - Camera that shakes when the player gets hit
+
 
 ## References
 Kenny.com Puzzle Pack:
@@ -78,8 +80,10 @@ Kenny.com Puzzle Pack:
 - Back Groove
 - - https://www.1001freefonts.com/back-groove.font
 
+
 ## Future Development
 None
+
 
 ## Created by
 Aaron Funkhouser
