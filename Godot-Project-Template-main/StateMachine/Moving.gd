@@ -18,7 +18,7 @@ func physics_process(_delta):
 	else:
 		player.velocity.y = 0
 	if Input.is_action_pressed("jump"):
-		SM.set_state("Moving_and_Jumping")
+		SM.set_state("Jumping")
 	if player.is_moving():
 		if player.direction != prev_direction:
 			player.velocity.x = 0

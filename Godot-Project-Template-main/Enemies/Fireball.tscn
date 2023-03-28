@@ -142,7 +142,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=37]
-radius = 21.0
+radius = 27.0
 height = 14.0
 
 [node name="Fireball" type="KinematicBody2D"]
@@ -153,7 +153,6 @@ position = Vector2( 788, 557 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 36 )
 animation = "Moving"
-frame = 4
 playing = true
 offset = Vector2( -1, -8 )
 flip_h = true

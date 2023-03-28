@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Player/Player_Container.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Pheonix.tscn" type="PackedScene" id=2]
@@ -14,6 +14,12 @@
 [ext_resource path="res://HUD/Overlay.gd" type="Script" id=12]
 [ext_resource path="res://HUD/Overlay_Die.gd" type="Script" id=13]
 [ext_resource path="res://Assets/Back Groove.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Enemies/Spider.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Collectables/Snowflake5.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Collectables/Snowflake2.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Collectables/Snowflake4.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Collectables/Snowflake3.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Assets/Snowflake Collectable.png" type="Texture" id=20]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 70, 70, 0, 70, 0, 0, 70, 0 )
@@ -877,20 +883,37 @@ points = PoolVector2Array( 70, 70, 0, 70, 0, 0, 70, 0 )
 41/shapes = [  ]
 41/z_index = 0
 
-[sub_resource type="DynamicFont" id=49]
+[sub_resource type="DynamicFont" id=99]
 size = 27
 extra_spacing_char = 2
 font_data = ExtResource( 14 )
 
-[sub_resource type="DynamicFont" id=50]
+[sub_resource type="DynamicFont" id=100]
 size = 27
 extra_spacing_char = 2
 font_data = ExtResource( 14 )
 
-[sub_resource type="DynamicFont" id=51]
+[sub_resource type="DynamicFont" id=101]
 size = 27
 extra_spacing_char = 2
 font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=102]
+size = 27
+extra_spacing_char = 2
+font_data = ExtResource( 14 )
+
+[sub_resource type="AtlasTexture" id=98]
+atlas = ExtResource( 20 )
+region = Rect2( 2800, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=103]
+animations = [ {
+"frames": [ SubResource( 98 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
 
 [node name="Game" type="Node2D"]
 
@@ -936,7 +959,7 @@ cell_size = Vector2( 16, 32 )
 collision_layer = 0
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 262216, 536870929, 0, 393220, 536870929, 0, 393224, 536870930, 0, 393228, 17, 0, 393248, 536870928, 0, 393256, 536870928, 0, 393276, 17, 0, 393284, 16, 0, 655380, 16, 0, 655384, 16, 0, 786480, 536870929, 0, 786484, 536870928, 0, 786488, 17, 0, 917512, 16, 0, 1048604, 16, 0, 1048608, 18, 0, 1179708, 18, 0, 1179712, 16, 0, 1179716, 18, 0, 1245244, 536870928, 0, 1245248, 536870928, 0, 1245252, 536870928, 0, 1441804, 16, 0, 1441808, 18, 0, 1703942, 34, 0, 1703964, 16, 0, 1703968, 18, 0, 1703972, 16, 0 )
+tile_data = PoolIntArray( 262216, 536870929, 0, 393220, 536870929, 0, 393224, 536870930, 0, 393228, 17, 0, 393248, 536870928, 0, 393256, 536870928, 0, 393276, 17, 0, 393284, 16, 0, 655380, 16, 0, 655384, 16, 0, 786480, 536870929, 0, 786484, 536870928, 0, 786488, 17, 0, 917508, 16, 0, 1048604, 16, 0, 1048608, 18, 0, 1179708, 18, 0, 1179712, 16, 0, 1179716, 18, 0, 1245244, 536870928, 0, 1245248, 536870928, 0, 1245252, 536870928, 0, 1441804, 16, 0, 1441808, 18, 0, 1703942, 34, 0, 1703964, 16, 0, 1703968, 18, 0, 1703972, 16, 0 )
 
 [node name="Background2" type="TileMap" parent="."]
 position = Vector2( -91, 25 )
@@ -986,23 +1009,28 @@ min_constraints = -680
 [node name="Pheonix" parent="Enemy_Container" instance=ExtResource( 2 )]
 position = Vector2( 152, 446 )
 
+[node name="Spider" parent="Enemy_Container" instance=ExtResource( 15 )]
+position = Vector2( 1064, 282 )
+
+[node name="Spider2" parent="Enemy_Container" instance=ExtResource( 15 )]
+position = Vector2( 171, 538 )
+
 [node name="Snowflake_Container" type="Node2D" parent="."]
-position = Vector2( -18, -28 )
 
 [node name="Snowflake" parent="Snowflake_Container" instance=ExtResource( 3 )]
-position = Vector2( 1116, 151 )
+position = Vector2( 143, 530 )
 
-[node name="Snowflake2" parent="Snowflake_Container" instance=ExtResource( 3 )]
-position = Vector2( 402, 247 )
+[node name="Snowflake2" parent="Snowflake_Container" instance=ExtResource( 17 )]
+position = Vector2( 136, 119 )
 
-[node name="Snowflake3" parent="Snowflake_Container" instance=ExtResource( 3 )]
-position = Vector2( 123, 630 )
+[node name="Snowflake3" parent="Snowflake_Container" instance=ExtResource( 19 )]
+position = Vector2( 686, 229 )
 
-[node name="Snowflake4" parent="Snowflake_Container" instance=ExtResource( 3 )]
-position = Vector2( 1119, 938 )
+[node name="Snowflake4" parent="Snowflake_Container" instance=ExtResource( 18 )]
+position = Vector2( 1246, 325 )
 
-[node name="Snowflake5" parent="Snowflake_Container" instance=ExtResource( 3 )]
-position = Vector2( 721, 726 )
+[node name="Snowflake5" parent="Snowflake_Container" instance=ExtResource( 16 )]
+position = Vector2( 1124, 553 )
 
 [node name="Attack_Container" type="Node2D" parent="."]
 
@@ -1056,30 +1084,74 @@ margin_bottom = 40.0
 color = Color( 0.603922, 0.603922, 0.603922, 0.470588 )
 
 [node name="Score" type="Label" parent="CanvasLayer/HUD"]
-margin_left = 250.0
-margin_top = 2.0
-margin_right = 450.0
-margin_bottom = 42.0
+margin_left = 222.0
+margin_top = -1.0
+margin_right = 422.0
+margin_bottom = 39.0
 custom_colors/font_color = Color( 0.878431, 0.890196, 0.47451, 1 )
-custom_fonts/font = SubResource( 49 )
+custom_fonts/font = SubResource( 99 )
 text = "Score"
 valign = 1
 
 [node name="Lives" type="Label" parent="CanvasLayer/HUD"]
-margin_left = 77.0
-margin_top = -1.0
-margin_right = 277.0
-margin_bottom = 39.0
+margin_left = 79.0
+margin_right = 279.0
+margin_bottom = 40.0
 custom_colors/font_color = Color( 0.490196, 1, 0.964706, 1 )
-custom_fonts/font = SubResource( 50 )
+custom_fonts/font = SubResource( 100 )
 text = "Lives"
 valign = 1
 
 [node name="Health" type="Label" parent="CanvasLayer/HUD"]
-margin_left = 500.0
-margin_right = 700.0
-margin_bottom = 40.0
+margin_left = 369.0
+margin_top = -1.0
+margin_right = 569.0
+margin_bottom = 39.0
 custom_colors/font_color = Color( 1, 0.545098, 0.545098, 1 )
-custom_fonts/font = SubResource( 51 )
+custom_fonts/font = SubResource( 101 )
 text = "Health"
 valign = 1
+
+[node name="Snowflakes" type="Label" parent="CanvasLayer/HUD"]
+margin_left = 605.0
+margin_top = -2.0
+margin_right = 805.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 102 )
+text = "Snowflakes"
+valign = 1
+
+[node name="SnowflakeIcon1" type="AnimatedSprite" parent="CanvasLayer/HUD"]
+visible = false
+position = Vector2( 775, 23 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 103 )
+playing = true
+
+[node name="SnowflakeIcon2" type="AnimatedSprite" parent="CanvasLayer/HUD"]
+visible = false
+position = Vector2( 808, 23 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 103 )
+playing = true
+
+[node name="SnowflakeIcon3" type="AnimatedSprite" parent="CanvasLayer/HUD"]
+visible = false
+position = Vector2( 842, 23 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 103 )
+playing = true
+
+[node name="SnowflakeIcon4" type="AnimatedSprite" parent="CanvasLayer/HUD"]
+visible = false
+position = Vector2( 873, 23 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 103 )
+playing = true
+
+[node name="SnowflakeIcon5" type="AnimatedSprite" parent="CanvasLayer/HUD"]
+visible = false
+position = Vector2( 904, 23 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 103 )
+playing = true

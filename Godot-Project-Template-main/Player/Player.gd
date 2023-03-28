@@ -16,10 +16,9 @@ export var move_speed = 20
 export var max_move = 300
 
 export var jump_speed = 200
-export var max_jump = 1200
+export var max_jump = 400
 
 export var leap_speed = 200
-export var max_leap = 1200
 
 var moving = false
 var is_jumping = false
@@ -51,7 +50,8 @@ func _physics_process(_delta):
 		if is_on_floor():
 			double_jumped = false
 			set_wall_raycasts(true)
-
+		
+		
 func is_moving():
 	if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		return true
@@ -104,6 +104,11 @@ func do_damage(d):
 	overlay.add_trauma(0.4)
 	Global.decrease_health(d)
 	if Global.health <= 0:
+		die()
+
+func _on_AnimatedSprite_animation_finished():
+	if Global.health <= 0:
+		$AnimatedSprite.play("Dying")
 		die()
 
 func die():

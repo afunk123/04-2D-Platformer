@@ -313,7 +313,7 @@ region = Rect2( 400, 0, 100, 100 )
 [sub_resource type="SpriteFrames" id=146]
 animations = [ {
 "frames": [ SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ) ],
-"loop": true,
+"loop": false,
 "name": "Attacking",
 "speed": 20.0
 }, {
@@ -348,7 +348,6 @@ script = ExtResource( 1 )
 position = Vector2( 557, 83 )
 frames = SubResource( 146 )
 animation = "Flying"
-frame = 9
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=196 format=2]
+[gd_scene load_steps=195 format=2]
 
 [ext_resource path="res://StateMachine/Jumping.gd" type="Script" id=2]
 [ext_resource path="res://StateMachine/Moving.gd" type="Script" id=3]
@@ -6,7 +6,6 @@
 [ext_resource path="res://StateMachine/Coyote.gd" type="Script" id=5]
 [ext_resource path="res://StateMachine/Idle.gd" type="Script" id=6]
 [ext_resource path="res://StateMachine/Falling.gd" type="Script" id=7]
-[ext_resource path="res://StateMachine/Moving_and_Jumping.gd" type="Script" id=8]
 [ext_resource path="res://Player/Player.gd" type="Script" id=9]
 [ext_resource path="res://Assets/Snowman Player & Walking Sprite.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Snowman Jumping Sprite.png" type="Texture" id=11]
@@ -742,7 +741,7 @@ animations = [ {
 "frames": [ SubResource( 199 ), SubResource( 200 ), SubResource( 201 ), SubResource( 202 ), SubResource( 203 ), SubResource( 204 ), SubResource( 205 ), SubResource( 206 ), SubResource( 207 ), SubResource( 208 ), SubResource( 209 ), SubResource( 210 ), SubResource( 211 ), SubResource( 212 ), SubResource( 213 ), SubResource( 214 ), SubResource( 215 ), SubResource( 216 ), SubResource( 217 ), SubResource( 218 ), SubResource( 219 ), SubResource( 220 ), SubResource( 221 ), SubResource( 222 ), SubResource( 223 ), SubResource( 224 ), SubResource( 225 ), SubResource( 226 ), SubResource( 227 ), SubResource( 228 ), SubResource( 229 ), SubResource( 230 ), SubResource( 231 ), SubResource( 232 ), SubResource( 233 ), SubResource( 234 ), SubResource( 235 ), SubResource( 236 ), SubResource( 237 ), SubResource( 238 ), SubResource( 239 ), SubResource( 240 ), SubResource( 241 ), SubResource( 242 ), SubResource( 243 ), SubResource( 244 ), SubResource( 245 ), SubResource( 246 ), SubResource( 247 ), SubResource( 248 ), SubResource( 249 ), SubResource( 250 ), SubResource( 251 ), SubResource( 252 ), SubResource( 253 ), SubResource( 254 ), SubResource( 255 ), SubResource( 256 ), SubResource( 257 ), SubResource( 258 ), SubResource( 259 ), SubResource( 260 ), SubResource( 261 ), SubResource( 262 ), SubResource( 263 ), SubResource( 264 ), SubResource( 265 ), SubResource( 266 ), SubResource( 267 ), SubResource( 268 ), SubResource( 269 ), SubResource( 270 ) ],
 "loop": true,
 "name": "Attacking",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [ SubResource( 271 ), SubResource( 272 ), SubResource( 273 ), SubResource( 274 ), SubResource( 275 ), SubResource( 276 ), SubResource( 277 ), SubResource( 278 ), SubResource( 279 ), SubResource( 280 ), SubResource( 281 ), SubResource( 282 ), SubResource( 283 ), SubResource( 284 ), SubResource( 285 ), SubResource( 286 ), SubResource( 287 ), SubResource( 288 ), SubResource( 289 ), SubResource( 290 ), SubResource( 291 ), SubResource( 292 ), SubResource( 293 ), SubResource( 294 ), SubResource( 295 ), SubResource( 296 ), SubResource( 297 ), SubResource( 298 ), SubResource( 299 ), SubResource( 300 ), SubResource( 301 ), SubResource( 302 ), SubResource( 303 ), SubResource( 304 ), SubResource( 305 ), SubResource( 306 ), SubResource( 307 ), SubResource( 308 ), SubResource( 309 ), SubResource( 310 ), SubResource( 311 ), SubResource( 312 ), SubResource( 313 ), SubResource( 314 ), SubResource( 315 ) ],
 "loop": true,
@@ -760,9 +759,9 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ SubResource( 316 ), SubResource( 317 ), SubResource( 318 ), SubResource( 319 ), SubResource( 320 ), SubResource( 321 ), SubResource( 322 ), SubResource( 323 ), SubResource( 324 ), SubResource( 325 ), SubResource( 326 ), SubResource( 327 ), SubResource( 328 ), SubResource( 329 ), SubResource( 330 ), SubResource( 331 ), SubResource( 332 ), SubResource( 333 ), SubResource( 334 ), SubResource( 335 ), SubResource( 336 ), SubResource( 337 ), SubResource( 338 ), SubResource( 339 ), SubResource( 340 ), SubResource( 341 ), SubResource( 342 ), SubResource( 343 ), SubResource( 344 ), SubResource( 345 ), SubResource( 346 ), SubResource( 347 ), SubResource( 348 ), SubResource( 349 ), SubResource( 350 ), SubResource( 351 ), SubResource( 352 ), SubResource( 353 ), SubResource( 354 ), SubResource( 355 ) ],
-"loop": true,
+"loop": false,
 "name": "Jumping",
-"speed": 100.0
+"speed": 50.0
 }, {
 "frames": [ SubResource( 356 ), SubResource( 357 ), SubResource( 358 ), SubResource( 359 ), SubResource( 360 ), SubResource( 361 ), SubResource( 362 ), SubResource( 363 ), SubResource( 364 ), SubResource( 365 ), SubResource( 366 ), SubResource( 367 ), SubResource( 368 ), SubResource( 369 ), SubResource( 370 ), SubResource( 371 ), SubResource( 372 ), SubResource( 373 ), SubResource( 374 ), SubResource( 375 ), SubResource( 376 ), SubResource( 377 ), SubResource( 378 ), SubResource( 379 ) ],
 "loop": true,
@@ -774,13 +773,14 @@ animations = [ {
 extents = Vector2( 28, 43 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 200, 200 )
+position = Vector2( 201, 201 )
 script = ExtResource( 9 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -13, 2 )
 frames = SubResource( 15 )
 animation = "Idle"
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
@@ -791,19 +791,19 @@ shape = SubResource( 16 )
 [node name="Left" type="RayCast2D" parent="Floor"]
 position = Vector2( -8, 37 )
 enabled = true
-cast_to = Vector2( 0, 14 )
+cast_to = Vector2( 0, 21 )
 collision_mask = 30
 
 [node name="Center" type="RayCast2D" parent="Floor"]
 position = Vector2( 0, 37 )
 enabled = true
-cast_to = Vector2( 0, 15 )
+cast_to = Vector2( 0, 22 )
 collision_mask = 30
 
 [node name="Right" type="RayCast2D" parent="Floor"]
 position = Vector2( 7, 38 )
 enabled = true
-cast_to = Vector2( 0, 15 )
+cast_to = Vector2( 1, 21 )
 collision_mask = 2147483678
 
 [node name="Wall" type="Node2D" parent="."]
@@ -834,9 +834,6 @@ script = ExtResource( 3 )
 [node name="Jumping" type="Node" parent="StateMachine"]
 script = ExtResource( 2 )
 
-[node name="Moving_and_Jumping" type="Node" parent="StateMachine"]
-script = ExtResource( 8 )
-
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
 
@@ -847,4 +844,5 @@ script = ExtResource( 5 )
 wait_time = 0.2
 one_shot = true
 
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="StateMachine/Coyote/Timer" to="StateMachine/Coyote" method="_on_Timer_timeout"]

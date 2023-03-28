@@ -25,6 +25,10 @@ func _physics_process(_delta):
 				move_and_slide(velocity, Vector2(0,0))
 		$AnimatedSprite.play("Moving")
 
+func _on_Sight_body_entered(body):
+	if body.name == "Player":
+		$AnimatedSprite.play("Attacking")
+
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		body.do_damage(damage)
@@ -38,8 +42,3 @@ func die():
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "Dying":
 		queue_free()
-
-
-func _on_Sight_body_entered(body):
-	if body.name == "Player":
-		("Attacking")

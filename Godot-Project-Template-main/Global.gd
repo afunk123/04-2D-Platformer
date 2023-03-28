@@ -22,3 +22,4 @@ func decrease_lives(l):
 	health = max_health
 	if lives <= 0:
 		get_tree().change_scene("res://Levels/Game_Over.tscn")
+
